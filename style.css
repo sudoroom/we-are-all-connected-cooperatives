@@ -1,0 +1,198 @@
+body {
+    font-family: sans-serif;
+    background-color: #f0f8ff; /* Light sky blue */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+}
+
+h1 {
+    color: #333;
+}
+
+.map-container {
+    position: relative; /* Crucial for positioning elements inside */
+    width: 600px;
+    height: 250px; /* Adjust height to fit content */
+    margin-top: 30px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    overflow: hidden; /* Hide parts of cartoons outside the box */
+}
+
+.route-path {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* Path behind points */
+}
+
+/* Animation for drawing the path */
+#routeLine {
+    animation: drawPath 5s ease-out forwards;
+    animation-delay: 0.5s; /* Start drawing after a short delay */
+    /* marker-end: url(#arrowhead); /* Uncomment to add arrowhead */
+}
+
+@keyframes drawPath {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+/* Animation for the bike icon */
+#bikeIcon {
+    offset-path: path('M 50 100 H 250 Q 300 100, 300 150 T 550 150');
+    animation: moveBike 5s ease-out forwards;
+    animation-delay: 0.5s;
+    opacity: 0; /* Initially hidden */
+}
+
+@keyframes moveBike {
+    0% {
+        offset-distance: 0%;
+        opacity: 1;
+    }
+    100% {
+        offset-distance: 100%;
+        opacity: 1;
+    }
+}
+
+
+.location-point {
+    position: absolute;
+    z-index: 2; /* Points above path */
+    width: 40px;
+    height: 40px;
+    background-color: gold;
+    color: #333;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 12px;
+    cursor: pointer;
+    border: 2px solid #ccab00;
+    transform: translate(-50%, -50%); /* Center the point on its coords */
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.location-point:hover {
+    transform: translate(-50%, -50%) scale(1.1);
+    background-color: #ffec8b; /* Lighter gold on hover */
+}
+
+/* Specific point styling (optional) */
+.rps { background-color: #ff6347; border-color: #b22222; } /* Tomato */
+.sudo { background-color: #90ee90; border-color: #2e8b57;} /* LightGreen */
+.longhaul { background-color: #add8e6; border-color: #4682b4; } /* LightBlue */
+
+.info-box {
+    position: absolute;
+    z-index: 3; /* Info above points */
+    background-color: rgba(255, 255, 255, 0.95);
+    border: 1px solid #aaa;
+    border-radius: 8px;
+    padding: 15px;
+    min-width: 200px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    display: none; /* Hidden by default */
+    top: 50px; /* Default position, JS will adjust */
+    left: 50%; /* Default position */
+    transform: translateX(-50%); /* Center horizontally */
+}
+
+.info-box h4 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #0056b3;
+}
+
+.info-box p {
+    margin-bottom: 15px;
+    font-size: 0.9em;
+}
+
+.info-box a {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+}
+
+.info-box a:hover {
+    background-color: #0056b3;
+}
+
+.info-box .close-btn {
+    position: absolute;
+    top: 5px;
+    right: 8px;
+    background: none;
+    border: none;
+    font-size: 1.2em;
+    cursor: pointer;
+    color: #aaa;
+}
+.info-box .close-btn:hover {
+    color: #333;
+}
+
+/* Cute Cartoon Bubbles */
+.cartoon {
+    position: absolute;
+    width: 50px; /* Adjust size */
+    height: 50px; /* Adjust size */
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 0; /* Behind everything */
+    opacity: 0.7;
+}
+
+/* Add your cartoon images here */
+/* Upload images to Glitch assets and use the generated URLs */
+.bubble1 {
+    /* background-image: url('YOUR_GLITCH_ASSET_URL_1.png'); */
+    background-color: rgba(173, 216, 230, 0.5); /* Placeholder color */
+    border-radius: 50%;
+    top: 20px;
+    left: 150px;
+    animation: float 6s ease-in-out infinite;
+}
+
+.bubble2 {
+    /* background-image: url('YOUR_GLITCH_ASSET_URL_2.png'); */
+     background-color: rgba(255, 192, 203, 0.5); /* Placeholder color */
+     width: 40px;
+     height: 40px;
+     border-radius: 50%;
+    top: 180px;
+    left: 400px;
+     animation: float 8s ease-in-out infinite reverse;
+}
+
+.bubble3 {
+    /* background-image: url('YOUR_GLITCH_ASSET_URL_3.svg'); */
+     background-color: rgba(144, 238, 144, 0.5); /* Placeholder color */
+     width: 60px;
+     height: 40px;
+     border-radius: 10px;
+    top: 60px;
+    right: 30px;
+     animation: float 7s ease-in-out infinite;
+}
+
+/* Simple floating animation for cartoons */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}

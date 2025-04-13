@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oakland/Berkeley Collective Bike Route</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>Bike Route: Collectives Tour!</h1>
+
+    <div class="map-container">
+        <svg class="route-path" viewBox="0 0 600 200" preserveAspectRatio="xMidYMid meet">
+            <defs>
+                <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+                    <polygon points="0 0, 10 3.5, 0 7" />
+                </marker>
+            </defs>
+            <path id="routeLine" d="M 50 100 H 250 Q 300 100, 300 150 T 550 150"
+                  stroke="dodgerblue" stroke-width="5" fill="none"
+                  stroke-dasharray="1000" stroke-dashoffset="1000">
+                  </path>
+             <circle id="bikeIcon" cx="50" cy="100" r="8" fill="red" />
+        </svg>
+
+        <div class="location-point rps" data-info="rps-info" style="left: 50px; top: 90px;">RPS</div>
+        <div class="location-point sudo" data-info="sudo-info" style="left: 290px; top: 140px;">Sudo</div>
+        <div class="location-point longhaul" data-info="longhaul-info" style="left: 540px; top: 140px;">LH</div>
+
+        <div class="info-box" id="rps-info">
+            <h4>RPS Collective</h4>
+            <p>Rock Paper Scissors Collective - Community arts space.</p>
+            <a href="https://rpscollective.org/" target="_blank">Visit Website</a>
+            <button class="close-btn">X</button>
+        </div>
+        <div class="info-box" id="sudo-info">
+            <h4>Sudo Room</h4>
+            <p>Creative community & hackerspace in Temescal.</p>
+            <a href="https://sudoroom.org/" target="_blank">Visit Website</a>
+            <button class="close-btn">X</button>
+        </div>
+        <div class="info-box" id="longhaul-info">
+            <h4>The Long Haul</h4>
+            <p>Infoshop, Zine Library, Community Space in Berkeley.</p>
+            <a href="https://thelonghaul.org/" target="_blank">Visit Website</a>
+            <button class="close-btn">X</button>
+        </div>
+
+        <div class="cartoon bubble1"></div>
+        <div class="cartoon bubble2"></div>
+        <div class="cartoon bubble3"></div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
